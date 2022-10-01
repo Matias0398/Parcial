@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -52,4 +53,8 @@ public class Pedidos implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_envios")
 	private Envios envio;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="fk_usuario"))
+	private Usuarios usuario
 }
