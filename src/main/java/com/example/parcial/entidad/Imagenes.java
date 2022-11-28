@@ -30,6 +30,6 @@ public class Imagenes {
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "fk_producto")
-	private Productos producto;
+	private Producto producto;
 }
 

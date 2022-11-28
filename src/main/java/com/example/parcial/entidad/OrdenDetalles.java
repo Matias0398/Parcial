@@ -34,7 +34,7 @@ public class OrdenDetalles {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_producto")
-	private Productos producto;
+	private Producto producto;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="fk_pedido")
