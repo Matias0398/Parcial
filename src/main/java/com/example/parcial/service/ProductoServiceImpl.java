@@ -3,10 +3,10 @@ package com.example.parcial.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.parcial.entidad.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.parcial.entidad.Producto;
 import com.example.parcial.repository.IProductoRepository;
 
 @Service

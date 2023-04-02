@@ -8,12 +8,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name="productos")
+@Table(name="detalleOrden")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Producto {
+public class DetalleOrden {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +22,18 @@ public class Producto {
     @Column(name="nombre")
     private String nombre;
 
-    @Column(name="descripcion")
-    private String descripcion;
-
-    @Column(name="imagen")
-    private String imagen;
+    @Column(name="cantidad")
+    private int cantidad;
 
     @Column(name="precio")
     private double precio;
 
-    @Column(name="cantidad")
-    private int cantidad;
+    @Column(name="total")
+    private double total;
 
     @ManyToOne
-    private Usuario usuario;
+    private Orden orden;
+
+    @ManyToOne
+    private Producto producto;
 }
