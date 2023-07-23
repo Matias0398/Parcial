@@ -3,6 +3,8 @@ package com.example.parcial.entidad;
 import lombok.*;
 
 import javax.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,10 +22,10 @@ public class Orden {
     private String numero;
 
     @Column(name="fechaCreacion")
-    private Data fechaCreacion;
+    private Date fechaCreacion;
 
     @Column(name="fechaRecibida")
-    private Data fechaRecibida;
+    private Date fechaRecibida;
 
     @Column(name="total")
     private double total;

@@ -20,7 +20,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class Usuario {
 
 
@@ -41,7 +40,7 @@ public class Usuario {
     private String direccion;
 
     @Column(name="telefono")
-    private int telefono;
+    private String telefono;
 
     @Column(name="contraseña")
     private String password;
