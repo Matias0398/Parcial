@@ -3,6 +3,10 @@ package com.example.parcial.controller;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.parcial.entidad.Producto;
 import com.example.parcial.entidad.Usuario;
+import com.example.parcial.service.IUsuarioService;
 import com.example.parcial.service.ProductoServiceImpl;
 import com.example.parcial.service.UploadFileService;
 
@@ -22,6 +27,11 @@ import com.example.parcial.service.UploadFileService;
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
+	
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductoController.class);
+	
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 	@Autowired
 	private ProductoServiceImpl productoService;
@@ -42,17 +52,23 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Producto producto,@RequestParam("img") MultipartFile file) throws IOException {
+	public String save(Producto producto, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
+		LOGGER.info("Este es el objeto producto {}",producto);
 		
-		//imagenes
-		if(producto.getId()==null) {
-			String nombreImagen=upload.saveImage(file);
+		
+		Usuario u= usuarioService.findbyId(Integer.parseInt(session.getAttribute("idusuario").toString() )).get();
+		producto.setUsuario(u);	
+		
+		//imagen
+		if (producto.getId()==null) { // cuando se crea un producto
+			String nombreImagen= upload.saveImage(file);
 			producto.setImagen(nombreImagen);
 		}else {
+			
 		}
+		
 		productoService.save(producto);
 		return "redirect:/productos";
-		
 	}
 	
 	@GetMapping("/edit/{id}")
