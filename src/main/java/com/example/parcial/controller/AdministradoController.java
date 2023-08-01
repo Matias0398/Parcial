@@ -38,7 +38,7 @@ public class AdministradoController {
 	public String home(Model model) {
 		
 		List<Producto>producto=productoService.findAll();
-		model.addAttribute("producto",producto);
+		model.addAttribute("producto",productoService.findAll());
 		return "administrador/home";
 	}
 	
