@@ -7,5 +7,5 @@ import com.example.parcial.entidad.DetalleOrden;
 
 @Repository
 public interface IDetalleOrdenRepository extends JpaRepository<DetalleOrden, Integer> {
-	
+	//
 }

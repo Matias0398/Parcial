@@ -14,6 +14,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Orden {
+	
+	//entidad orden
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
